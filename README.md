@@ -3,7 +3,7 @@
 ### Summary
 
 This is an initial attempt to generalize and centralize reusable Python snippets and classes that our team (CERTI->CES->Turing) implements.
-As of right now (march, 24, 2020) I am the only contributor to this, that's why it is in my private repository. In the future the fate of this repository will be to be merge into the super-strict agile-ces workspace. However, since that workspace is tighly controlled and I do not have adminitrative rights, I will not be uploading it there anytime soon.
+As of right now (march, 24, 2020) I am the only contributor to this, that's why it is in my private repository. In the future the fate of this repository will be to be merged into the super-strict agile-ces workspace. However, since that workspace is tighly controlled and I do not have adminitrative rights, I will not be uploading it there anytime soon.
 
 ### Setup
 
@@ -13,7 +13,7 @@ Just download/clone this repository in a folder next to your Python entrypoint (
 
 ### Getting Started
 
-> TPF makes it super easy for you to create an app with a setup, a main and a tear-down method.
+> TPF makes it super easy for you to create an app with a setup->run->tear down life cycle.
 
 Consider a project with the following structure:
 
@@ -24,9 +24,10 @@ Consider a project with the following structure:
 ```
 
 You can create a setup->run->tear down app by extending the `App` class as follows
+
 **main.py:**
 
-```python
+``` python
 from tpf.app import App
 
 class Main(App):
@@ -49,13 +50,13 @@ if __name__ == '__main__':
     Main.start()
 ```
 
-> Note: `setup` and `tear_down` methods are optional. They can be removed from the
+> Note: `setup` and `tear_down` methods are optional. They could be removed from the file
 
 ### Using RedisManager
 
 **main.py:**
 
-```python
+``` python
 from tpf.app import App
 from tpf.daos.redis_manager import RedisManager
 
