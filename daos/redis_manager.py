@@ -90,15 +90,15 @@ class RedisManager:
     See also: https://pypi.org/project/redis/
     """
 
-    def __init__(self):
+    def __init__(self, host='localhost', port=6379):
         # list of active subscriptions. The format is:
         # {'my_channel': Subscription}
         self._subscriptions: dict = {}
 
         # connection pool
         self._pool = redis.ConnectionPool(
-            host=AppSettings.get_str('redis_host', default='localhost'),
-            port=AppSettings.get_int('redis_port', default=6379)
+            host=AppSettings.get_str('redis_host', default=host),
+            port=AppSettings.get_int('redis_port', default=port)
         )
 
         # other configurations
