@@ -118,7 +118,7 @@ class AppSettings(ABC):
 
     @classmethod
     def _setup_log_level(cls) -> None:
-        log_level = cls.get_str('log_level', default='INFO').upper()
+        log_level = cls.get_str('log_level', default='DEBUG').upper()
         cls._get_logger().setLevel(log_level)
 
     @classmethod

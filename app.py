@@ -30,12 +30,16 @@ class App(ABC):
         raise RuntimeError(f'Abstract class "{clazz}" cannot be instantiated')
 
     @classmethod
+    def setup(cls) -> None:
+        pass
+
+    @classmethod
     @abstractmethod
-    def main(cls) -> None:
+    def run(cls) -> None:
         raise NotImplementedError()
 
     @classmethod
-    def clean_up(cls) -> None:
+    def tear_down(cls) -> None:
         pass
 
     @classmethod
@@ -51,14 +55,22 @@ class App(ABC):
 
         logging.debug('APP STARTED (ENV=%s)', env)
 
+        # executes the setup method
+        try:
+            cls.setup()
+        except Exception as ex:
+            logging.error('Error while executing SETUP method (%s)', ex)
+            cls._execute_tear_down()
+            raise
+
         # executes main method
         try:
-            cls.main()
+            cls.run()
         except Exception as ex:
-            logging.error('Error while executing main function (%s)', ex)
+            logging.error('Error while executing RUN method (%s)', ex)
             raise
         finally:
-            cls._run_clean_up()
+            cls._execute_tear_down()
             logging.debug('EXECUTION FINISHED')
 
     @classmethod
@@ -103,17 +115,15 @@ class App(ABC):
         signal(SIGTERM, handler)
 
     @classmethod
-    def _run_clean_up(cls) -> None:
+    def _execute_tear_down(cls) -> None:
         """
         Executes the clean up routine
         """
-        logging.debug('Running "clean_up" method')
+        logging.debug('Running TEAR_DOWN method')
         try:
-            cls.clean_up()
-        except NotImplementedError:
-            logging.debug('"clean_up" not implemented')
+            cls.tear_down()
         except Exception as ex:
-            logging.error('Error while executing "clean_up" method (%s)', ex)
+            logging.error('Error while executing TEAR_DOWN method (%s)', ex)
             raise
 
     @classmethod

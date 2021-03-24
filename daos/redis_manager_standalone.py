@@ -12,9 +12,6 @@ from typing import Callable
 # api import
 import redis
 
-# framework imports
-from ..helpers.app_settings import AppSettings
-
 
 def _default_exception_handler(ex: Exception, subscription: 'Subscription'):
     subscription.log_exception(ex)
@@ -96,18 +93,11 @@ class RedisManager:
         self._subscriptions: dict = {}
 
         # connection pool
-        self._pool = redis.ConnectionPool(
-            host=AppSettings.get_str('redis_host', default=host),
-            port=AppSettings.get_int('redis_port', default=port)
-        )
-
-        # other configurations
-        self._charset = AppSettings.get_str('redis_charset', default='utf-8')
+        self._pool = redis.ConnectionPool(host=host, port=port)
 
     def _build_redis(self) -> redis.Redis:
         return redis.Redis(
             connection_pool=self._pool,
-            charset=self._charset,
             decode_responses=True
         )
 
