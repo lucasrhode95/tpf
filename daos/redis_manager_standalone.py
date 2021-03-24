@@ -140,12 +140,12 @@ class RedisManager:
             msg = '%s(%s) while unsubscribing from "%s"'
             logging.debug(msg, type(ex).__name__, ex, channel)
 
-    def publish(self, channel: str, msg: str) -> None:
-        self._build_redis().publish(channel, msg)
+    def publish(self, channel: str, message: str) -> None:
+        self._build_redis().publish(channel, message)
 
         if self.is_subscribed_to(channel):
             subscription = self.get_subscription_by_channel(channel)
-            subscription.last_message_posted_payload = msg
+            subscription.last_message_posted_payload = message
 
         logging.debug('Published to "%s"', channel)
 
