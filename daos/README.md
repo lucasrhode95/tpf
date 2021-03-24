@@ -2,9 +2,9 @@
 
 ### Summary
 
-- Redis
-- MySQL
-- PostgreSQL
+* Redis
+* MySQL
+* PostgreSQL
 
 ## Redis
 
@@ -15,27 +15,26 @@ That is, you can copy and paste `redis_manager_standalone` and use it without t
 
 > NOTE: currently we only support PUB/SUB, but feel free to add GET/SET support
 
-### Using `redis_manager`
+### Using redis\_manager
 
 See TPF's homepage for a complete usage example
 
-### Using `redis_manager_standalone`
+### Using redis\_manager\_standalone
 
 The standalone version can by copied to any folder in your project. Consider the following directory structure:
 
-```text
+``` text
 .
 ├── redis_manager_standalone.py
 ├── redis_publish.py
 └── redis_subscribe.py
 ```
-
 <br>
 You can listen/publish messages as shown in `redis_publish.py` and `redis_subscribe.py`:
 
-**redis_publish.py:**
+**redis\_publish.py:**
 
-```python
+``` python
 import time
 from redis_manager_standalone import RedisManager
 
@@ -49,9 +48,9 @@ while True:
     time.sleep(1)
 ```
 
-**redis_subscribe.py:**
+**redis\_subscribe.py:**
 
-```python
+``` python
 import time
 from redis_manager_standalone import RedisManager
 
@@ -73,5 +72,4 @@ print('Therefore we need to keep the program alive with a while True')
 print('Press Ctrl+C to quit')
 while True:
     time.sleep(1)
-
 ```
