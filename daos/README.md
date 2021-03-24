@@ -17,7 +17,7 @@ That is, you can copy and paste `redis_manager_standalone` and use it without t
 
 ### Using redis\_manager
 
-See TPF's homepage for a complete usage example
+See TPF's [homepage](../README.md) for a complete usage example
 
 ### Using redis\_manager\_standalone
 
