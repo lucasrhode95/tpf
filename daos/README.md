@@ -29,7 +29,7 @@ The standalone version can by copied to any folder in your project. Consider the
 ├── redis_publish.py
 └── redis_subscribe.py
 ```
-<br>
+
 You can listen/publish messages as shown in `redis_publish.py` and `redis_subscribe.py`:
 
 **redis\_publish.py:**
