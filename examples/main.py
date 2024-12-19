@@ -1,9 +1,8 @@
-from tpf.app import App
-from tpf.daos.redis_manager import RedisManager
+from app_manager import AppManager
+from redis.redis_manager import RedisManager
 
 
-class Main(App):
-
+class Main(AppManager):
     redis: RedisManager
 
     @classmethod
@@ -40,4 +39,4 @@ class Main(App):
 
 
 if __name__ == '__main__':
-    Main.start()
+    Main.start("my-app-name")

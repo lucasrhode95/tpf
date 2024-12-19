@@ -1,17 +1,10 @@
-# Data Access Objects (DAOs)
+# Redis
 
-### Summary
-
-* Redis
-* MySQL
-* PostgreSQL
-
-## Redis
-
-We implement the `redis_manager` and `redis_manager_standalone` modules to access redis databases ([https://redis.io/](https://redis.io/)).
+We implement the `redis_manager`and`redis_manager_standalone` modules to access redis databases ([https://redis.
+io/](https://redis.io/)).
 The standalone version removes all dependencies that the original module has on the TPF repository.
 
-That is, you can copy and paste `redis_manager_standalone` and use it without the need to clone the entire repository.
+That is, you can copy and paste`redis_manager_standalone` and use it without the need to clone the entire repository.
 
 > NOTE: currently we only support PUB/SUB, but feel free to add GET/SET support
 
@@ -30,7 +23,7 @@ The standalone version can by copied to any folder in your project. Consider the
 └── redis_subscribe.py
 ```
 
-You can listen/publish messages as shown in `redis_publish.py` and `redis_subscribe.py`:
+You can listen/publish messages as shown in`redis_publish.py` and`redis_subscribe.py`:
 
 **redis\_publish.py:**
 
